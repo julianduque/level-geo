@@ -19,7 +19,7 @@ $ npm install level-geo --save
 var level = require('levelup');
 var Geo = require('level-geo');
 
-var db = new Geo(level('./db'));
+var db = Geo(level('./db'));
 ```
 
 ### The MIT License (MIT)
