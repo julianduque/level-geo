@@ -4,8 +4,18 @@
   "description": "A spatial extension to LevelDB",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "set -e; for t in test/*-test.js; do node $t; done"
   },
   "author": "Julian Duque <julianduquej@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "tape": "~1.1.0",
+    "level-test": "~1.5.1"
+  },
+  "dependencies": {
+    "geojson": "~0.1.4",
+    "geojson-utils": "~1.0.0",
+    "rtree": "~1.1.1",
+    "level-sublevel": "~5.1.1"
+  }
 }
