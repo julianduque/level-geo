@@ -14,6 +14,13 @@ module.exports = function (_db) {
       db        = new Geo(),
       rtree     = rTree();
 
+
+  //
+  // Expose rTree index
+  //
+  db._rtree = rtree;
+
+
   //
   // Load Index
   //
