@@ -13,6 +13,16 @@ module.exports = function (_db) {
   var _index    = _db.sublevel('index'),
       db        = new Geo(),
       rtree     = rTree();
+
+  //
+  // Load Index
+  //
+  _index.get('_index', function (err, val) {
+    if (!err) {
+      rtree.setIndex(val);
+    }
+  });
+
   //
   // Override put
   //
@@ -27,6 +37,7 @@ module.exports = function (_db) {
 
     put.call(db, key, val, { valueEncoding: 'json'}, cb);
   };
+
   //
   // Override get
   //
@@ -37,7 +48,7 @@ module.exports = function (_db) {
 
 
   //
-  //
+  // Search Stream
   //
   db.createSearchStream = function (opts) {
     var results = rtree.bbox(opts.bbox || []);
@@ -53,6 +64,9 @@ module.exports = function (_db) {
     return es.readArray(results).pipe(ts);
   };
 
+  //
+  // Save index structure in db
+  //
   function _saveIndex() {
     _index.put('_index', rtree.getTree(), function (err) {});
   }
