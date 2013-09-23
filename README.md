@@ -2,7 +2,9 @@
 A geospatial index for LevelDB.
 
 [![Build Status](https://travis-ci.org/julianduque/level-geo.png)](https://travis-ci.org/julianduque/level-geo)
+
 [![NPM](https://nodei.co/npm/level-geo.png?downloads=true)](https://nodei.co/npm/level-geo/)
+
 [![NPM](https://nodei.co/npm-dl/level-geo.png)](https://nodei.co/npm/level-geo/)
 
 ## Features
