@@ -19,7 +19,7 @@ module.exports = function (_db) {
   //
   _index.get('_index', function (err, val) {
     if (!err) {
-      rtree.setIndex(val);
+      rtree.setTree(val);
     }
   });
 
