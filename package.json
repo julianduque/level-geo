@@ -1,6 +1,6 @@
 {
   "name": "level-geo",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A spatial extension to LevelDB",
   "main": "index.js",
   "scripts": {
@@ -16,6 +16,7 @@
     "geojson": "~0.1.4",
     "geojson-utils": "~1.0.0",
     "rtree": "~1.1.1",
-    "level-sublevel": "~5.1.1"
+    "level-sublevel": "~5.1.1",
+    "event-stream": "~3.0.16"
   }
 }
