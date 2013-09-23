@@ -6,6 +6,7 @@ A geospatial index for LevelDB.
 ## Features
 
 * GeoJSON Support
+* R-Tree Index
 
 ## Install
 
@@ -20,7 +21,34 @@ var level = require('levelup');
 var Geo = require('level-geo');
 
 var db = Geo(level('./db'));
+
+var points = [
+  { name: 'Pedro', lat: 6.233608, lng: -75.577697 }, // Medellin
+  { name: 'Juan', lat:  6.155215, lng: -75.60395 }, // Sabaneta
+  { name: 'Mario', lat: 6.137221 , lng: -75.386350 }, // Rionegro
+  { name: 'Camilo', lat: 26.832983, lng: -80.889393 } // USA
+];
+
+var count = '0';
+points.forEach(function (d) {
+  db.put('myIndex_' + count++, d, function (err) {});
+});
+
+// BBox Search 
+var bbox = [[-75.86, 5.99],[-75.20, 6.35]]; // Medellin Region
+db.createSearchStream({
+  bbox: bbox
+}).on('data', console.log);
+
+// { key: 'myIndex_2',
+//   value: { name: 'Mario', lat: 6.137221, lng: -75.38635 } }
+// { key: 'myIndex_1',
+//   value: { name: 'Juan', lat: 6.155215, lng: -75.60395 } }
+// { key: 'myIndex_0',
+//   value: { name: 'Pedro', lat: 6.233608, lng: -75.577697 } }
+
 ```
+
 
 ### The MIT License (MIT)
 
